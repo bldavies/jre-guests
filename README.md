@@ -40,4 +40,4 @@ I take no responsibility for the external use of these data, nor for any errors 
 
 All repository content is licensed under the [MIT license](https://github.com/bldavies/jre-guests/blob/master/LICENSE).
 
-[post-url]: https://bldavies.github.io/jre-guests
+[post-url]: https://bldavies.com/blog/jre-guests/
