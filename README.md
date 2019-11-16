@@ -1,24 +1,21 @@
 # *JRE* guests
 
-This repository contains the source material for [my blog post on popularity spikes following guests' appearances on *The Joe Rogan Experience*][post-url] (*JRE*).
+This repository contains the source data for [my blog post on popularity spikes following guests' appearances on *The Joe Rogan Experience*][post-url] (*JRE*).
+I collected these data at 9:50am NZST on September 18, 2018 using the R scripts in `code/`.
 
 ## File descriptions
 
-I performed my analysis in [RStudio](https://www.rstudio.com/) with R version 3.5.0.
-I ran the scripts in `code/` in the order tabulated below, each within a fresh instance of `jre-guests.Rproj`.
+`code/episodes.R` scrapes [the *JRE* podcast directory](http://podcasts.joerogan.net) for a list of episode numbers, dates and titles, and cleans these data by, e.g., filling in missing episode numbers and removing non-ASCII characters from episode titles.
 
-File | Description | Output
---- | --- | ---
-`episodes.R` | Scrapes [the *JRE* podcast directory](http://podcasts.joerogan.net) for a list of episode numbers, dates and titles, and cleans these data by, e.g., filling in missing episode numbers and removing non-ASCII characters from episode titles. | `data/episodes.csv`
-`guests.R` | Generates a (manually adjusted) list of guests who appear on each *JRE* episode identified in `data/episodes.csv`. | `data/guests.csv`
-`popularity.R` | Downloads Google Trends data (based on web search interest in the United States) for each unique value of `guest_name` in `data/guests.csv`. | `data/popularity.csv`
-`analysis.R` | Generates the figures and table used in [my blog post][post-url]. | All files in `figures/` and `tables/`
+`code/guests.R` generates a (manually adjusted) list of guests who appear on each *JRE* episode identified in `data/episodes.csv`.
 
-The files in `data/` were last updated at 9:50am NZST on September 18, 2018.
+`code/popularity.R` downloads Google Trends data (based on web search interest in the United States) for each unique value of `guest_name` in `data/guests.csv`.
+
+I ran each script in a fresh instance of `jre-guests.Rproj`.
 
 ## Dependencies
 
-I used the [`httr`](https://cran.r-project.org/package=httr) and [`rvest`](https://cran.r-project.org/package=rvest) packages to scrape episode metadata, [`gtrendsR`](https://cran.r-project.org/package=gtrendsR) to download Google Trends data, [`zoo`](https://cran.r-project.org/package=zoo) to compute rolling means, and various packages from the [tidyverse](https://www.tidyverse.org) to read, manipulate and write data.
+I used the [httr](https://cran.r-project.org/package=httr) and [rvest](https://cran.r-project.org/package=rvest) packages to scrape episode metadata, [gtrendsR](https://cran.r-project.org/package=gtrendsR) to download Google Trends data, [zoo](https://cran.r-project.org/package=zoo) to compute rolling means, and various packages from the [tidyverse](https://www.tidyverse.org) to read, manipulate and write data.
 These dependencies can be installed by running
 
 ```r
@@ -38,6 +35,6 @@ Such use is intended to be educational and my derived commentary would be severe
 Any use of the data contained in this repository is at the user's own legal risk.
 I take no responsibility for the external use of these data, nor for any errors that they contain.
 
-All repository content is licensed under the [MIT license](https://github.com/bldavies/jre-guests/blob/master/LICENSE).
+The contents of `code/` are licensed under the [MIT license](https://github.com/bldavies/jre-guests/blob/master/LICENSE).
 
 [post-url]: https://bldavies.com/blog/jre-guests/
